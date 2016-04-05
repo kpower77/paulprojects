@@ -18,6 +18,7 @@ public class MessagePrinter {
     private String option3;
     private String option4;
     private String[] options;
+    
     public MessagePrinter(){
         System.out.println("Starting MessagePrinter Constructor...");
       
