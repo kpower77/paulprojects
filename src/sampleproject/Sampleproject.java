@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sampleproject;
 
 import java.io.BufferedReader;
@@ -11,24 +7,16 @@ import java.io.InputStreamReader;
 
 
 /**
- *
- * @author Kenneth
+ * @date April 2016
+ * @author Kenneth Power
  */
 public class Sampleproject {
 
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
        System.out.println("WOOHOO!!");
        DummyAuthentication auth = new DummyAuthentication();
        auth.loginUser();
-//       /*
-//           Methods in the main class must be static.
-//           Meaning they can be called without instantiating the class.
-//           See the method signiture below.
-//       */
+//              */
 //       printHello();
 //       
 //       /*
