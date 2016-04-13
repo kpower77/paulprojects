@@ -7,6 +7,7 @@ package echoclient;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
@@ -25,6 +26,9 @@ public class EchoClient {
             
             ObjectOutputStream out;
             out = new ObjectOutputStream(clientSocket.getOutputStream());
+            out.flush();
+            ObjectInputStream in;
+            in = new ObjectInputStream(clientSocket.getInputStream());
             
         }
         catch(IOException ex){
