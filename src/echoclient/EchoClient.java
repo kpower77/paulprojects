@@ -16,7 +16,7 @@ import java.net.Socket;
  * @date April 2016
  * @author Kenneth Power
  */
-public class EchoClient {
+public class EchoClient{
     private Socket clientSocket;
     
     public void runClient(){
@@ -24,16 +24,19 @@ public class EchoClient {
             clientSocket = new Socket("localhost", 40000);
             System.out.println("Connect to Server on port 40000");
             
-            ObjectOutputStream out;
-            out = new ObjectOutputStream(clientSocket.getOutputStream());
-            out.flush();
-            ObjectInputStream in;
-            in = new ObjectInputStream(clientSocket.getInputStream());
+            InputStream in;
+            in = new InputStream(clientSocket.getInputStream());
+            
+            PrintStream out;
+            out = new PrintStream(clientSocket.getOutputStream());
+            
+            in.close();
+            out.close();
+            clientSocket.close();
             
         }
         catch(IOException ex){
             System.out.println("An IOExcepion occured");
-            ex.printStackTrace();
         }
     }
     
