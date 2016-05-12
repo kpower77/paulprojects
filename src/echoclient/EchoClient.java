@@ -23,7 +23,7 @@ import java.net.Socket;
  */
 public class EchoClient{
     private Socket clientSocket;
-    
+    private String message;
     public void runClient(){
         try{
             clientSocket = new Socket("localhost", 40000);
@@ -31,7 +31,7 @@ public class EchoClient{
             
             // send an OutputStream to the server to send data
             OutputStream out = clientSocket.getOutputStream();
-            BufferedWriter writer = new BufferedWriter(new OutputStreamReader(out));
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out));
             
             // get an InputStream from the server to read incoming data
             InputStream in = clientSocket.getInputStream();
@@ -45,8 +45,8 @@ public class EchoClient{
             
             writer.flush();
             
-            in.close();
-            out.close();
+            //in.close();
+            //out.close();
             clientSocket.close();
             
         }
