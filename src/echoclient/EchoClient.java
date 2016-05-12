@@ -5,11 +5,16 @@
  */
 package echoclient;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 
 /**
@@ -24,11 +29,21 @@ public class EchoClient{
             clientSocket = new Socket("localhost", 40000);
             System.out.println("Connect to Server on port 40000");
             
-            InputStream in;
-            in = new InputStream(clientSocket.getInputStream());
+            // send an OutputStream to the server to send data
+            OutputStream out = clientSocket.getOutputStream();
+            BufferedWriter writer = new BufferedWriter(new OutputStreamReader(out));
             
-            PrintStream out;
-            out = new PrintStream(clientSocket.getOutputStream());
+            // get an InputStream from the server to read incoming data
+            InputStream in = clientSocket.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            
+            writer.write("Hello from Client");
+            writer.newLine();
+            
+            message = reader.readLine();
+            System.out.println(message);
+            
+            writer.flush();
             
             in.close();
             out.close();
