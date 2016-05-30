@@ -5,8 +5,6 @@
  */
 package echoclient;
 
-import echoserver.EchoServer;
-
 /**
  *
  * @author Kenneth
