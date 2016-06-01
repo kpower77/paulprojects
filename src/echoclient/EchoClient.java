@@ -27,7 +27,7 @@ public class EchoClient{
     public void runClient(){
         try{
             clientSocket = new Socket("localhost", 40000);
-            System.out.println("Connect to Server on port 40000");
+            System.out.println("Echo Client has connected to Server");
             
             // send an OutputStream to the server to send data
             OutputStream out = clientSocket.getOutputStream();
@@ -37,17 +37,18 @@ public class EchoClient{
             InputStream in = clientSocket.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(in));
             
-            writer.write("Hello from Client");
+            writer.write("Hello from Echo Client");
             writer.newLine();
-            
-            message = reader.readLine();
-            System.out.println(message);
             
             writer.flush();
             
+            message = reader.readLine();
+            System.out.println(message);
+                        
             //in.close();
             //out.close();
             clientSocket.close();
+            
             
         }
         catch(IOException ex){
